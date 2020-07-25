@@ -1,0 +1,6 @@
+tup_a = (1,2,3,'a','b','c','abc')
+tup_b = ('connecting','me')
+print(tup_a)
+print(tup_a[0])
+print(tup_a[1:3])
+print(tup_a + tup_b)

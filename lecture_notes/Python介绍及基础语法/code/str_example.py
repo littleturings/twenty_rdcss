@@ -1,0 +1,12 @@
+a = "jdfz666"
+print(a)
+print(a[0])
+print(a[-1])
+print(a[:])
+print(a[3:6])
+print(a[-3:-1])
+print(a[-3:])
+print(a[1:])
+print(a * 2)
+print((a+" ") * 2)
+print("I love jdfz," + a)
