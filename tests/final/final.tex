@@ -1,0 +1,240 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{siunitx}
+\usepackage{hyperref}
+
+\title{2020 RDCSS: Python \&基础算法结业考核}
+\author{施想\\詹有丘}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=black,
+urlcolor=black,
+pdftitle={2020 RDCSS: Python\&基础算法结业考核}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{cccccc}
+题号 & 题目名 & 程序名 & 时间限制 & 内存限制 & 语言限制\\
+\hline
+1 & \hyperlink{section.1}{罗马数字} & roman & $\SI{1}{s}$ & $\SI{256}{MB}$ & Python\\
+2 & \hyperlink{section.2}{牢房} & jail & $\SI{1}{s}$ & $\SI{256}{MB}$ & Python\\
+3 & \hyperlink{section.3}{全排列} & perm & $\SI{1}{s}$ & $\SI{256}{MB}$ & Python\\
+\end{tabular}
+\end{table}
+
+环境: 64位Windows下的Python 3.8.4.
+
+\section{罗马数字 (roman)}
+\label{sec:roman}
+
+施想喜欢研究数学史.
+这天, 他正在研究罗马数字.
+
+罗马数字包含以下七种字符: I, V, X, L, C, D, M.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{cc}
+字符 & 数值\\
+\hline
+I & 1\\
+V & 5\\
+X & 10\\
+L & 50\\
+C & 100\\
+D & 500\\
+M & 1000
+\end{tabular}
+\end{table}
+
+例如, 罗马数字2写做II, 即为两个并列的1.
+12写做XII, 即为X + II. 
+27写做XXVII, 即为XX + V + II.
+
+通常情况下, 罗马数字中小的数字在大的数字的右边.
+但也存在特例, 例如4不写做IIII, 而是IV.
+数字1在数字5的左边, 所表示的数等于大数5减小数1得到的数值4.
+
+同样地, 数字9表示为IX. 这个特殊的规则只适用于以下六种情况:
+\begin{itemize}
+\item I可以放在V (5) 和X (10) 的左边, 来表示4和9.
+\item X可以放在L (50) 和C (100) 的左边, 来表示40和90.
+\item C可以放在D (500) 和M (1000) 的左边, 来表示400和900.
+\end{itemize}
+
+施想觉得罗马数字非常有趣, 但是罗马数字实在是太难读了!
+于是他想要写一个程序来\textbf{计算出给定的罗马数字代表的数值}.
+
+\subsection*{程序名:}
+
+\texttt{roman}
+
+\subsection*{输入 (\texttt{roman.in}):}
+
+输入共一行, 一个字符串. 保证是一个合法的罗马数字, 且其相应的整数值不超过3999.
+
+\subsection*{样例输入1:}
+
+\begin{verbatim}
+III
+\end{verbatim}
+
+\subsection*{样例输入2:}
+
+\begin{verbatim}
+MCMXCIV
+\end{verbatim}
+
+\subsection*{输出 (\texttt{roman.out}):}
+
+输出共一行, 即转换成的整数结果.
+
+\subsection*{样例输出1:}
+
+\begin{verbatim}
+3
+\end{verbatim}
+
+\subsection*{样例输出2:}
+
+\begin{verbatim}
+1994
+\end{verbatim}
+
+\subsection*{样例输出2解释:}
+
+M = 1000, CM = 900, XC = 90, IV = 4.
+
+\section{牢房 (jail)}
+\label{sec:jail}
+
+詹有丘开了一家监狱, 专门接待那些不好好上课的犯人.
+为了惩罚犯人, 他每天都会指挥犯人离开自己的房间或者进入自己的房间.
+
+监狱中总共有8间牢房, 排成一排, 每间牢房不是有人住就是空着.
+
+詹有丘的想法非常奇怪, 他制定了一个指挥牢房内犯人进出的规则:
+
+\textbf{如果一间牢房的两个相邻的房间都被占用或都是空的, 那么第二天该牢房就会被占用.
+否则, 它就会被空置.}
+
+请注意, 由于监狱中的牢房排成一行, 所以行中的第一个和最后一个房间无法有两个相邻的房间.
+
+詹有丘制定了规则之后, 对于$N$天后监狱的状况非常好奇, 于是他想要写一个程序来预测这一点.
+请你来帮帮他.
+
+\subsection*{程序名:}
+
+\texttt{jail}
+
+\subsection*{输入 (\texttt{jail.in}):}
+
+输入共两行.
+
+第一行是8个用空格隔开的整数$c_j$, 用于表示首日监狱的状况.
+其中$c_j=0,1$描述了第$j$个牢房的状况, 用$0$表示空牢房, 用$1$表示被占用的牢房.
+
+第二行是一个整数$N$, 满足$1\le N\le 10^9$.
+
+\subsection*{样例输入1:}
+
+\begin{verbatim}
+0 1 0 1 1 0 0 1
+7
+\end{verbatim}
+
+\subsection*{样例输入2:}
+
+\begin{verbatim}
+1 0 0 1 0 0 1 0
+1000000000
+\end{verbatim}
+
+\subsection*{输出 (\texttt{jail.out}):}
+
+输出共一行, 包含8个用空格隔开的整数$c'_j$, 用于表示$N$天后监狱的状况.
+其中$c'_j=0,1$描述了第$j$个牢房的状况, 用$0$表示空牢房, 用$1$表示被占用的牢房.
+
+\subsection*{样例输出1:}
+
+\begin{verbatim}
+0 0 1 1 0 0 0 0
+\end{verbatim}
+
+\subsection*{样例输出1解释:}
+
+下表概述了监狱每天的状况:
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c}
+0 & \texttt{0 1 0 1 1 0 0 1}\\
+1 & \texttt{0 1 1 0 0 0 0 0}\\
+2 & \texttt{0 0 0 0 1 1 1 0}\\
+3 & \texttt{0 1 1 0 0 1 0 0}\\
+4 & \texttt{0 0 0 0 0 1 0 0}\\
+5 & \texttt{0 1 1 1 0 1 0 0}\\
+6 & \texttt{0 0 1 0 1 1 0 0}\\
+7 & \texttt{0 0 1 1 0 0 0 0}\\
+\end{tabular}
+\end{table}
+
+\subsection*{样例输出2:}
+
+\begin{verbatim}
+0 0 1 1 1 1 1 0
+\end{verbatim}
+
+\subsection*{来源:}
+
+\href{https://leetcode-cn.com/problems/prison-cells-after-n-days}{LeetCode 957.}
+
+\section{全排列 (perm)}
+\label{sec:perm}
+
+胡姝婧是一个喜欢有秩序的事物的同学.
+她有一个爱好, 就是喜欢摆弄她的$N$个乐高小人.
+
+因为她喜欢秩序, 所以她总是会把她的乐高小人排成从左到右的一行, 还给小人标记了编号.
+她每天都会改变乐高小人的队伍, 发现她时常能排出一种她以前从来没排过的顺序.
+于是她想要计算一下这$N$个乐高小人到底有哪几种可能的\textbf{不重复的}排队方式.
+
+请你帮助胡姝婧写出程序.
+直觉告诉她, \textbf{这可能要用到最近学习过的递归}.
+另外, 因为胡姝婧热爱秩序, 请将所有的排列方式\textbf{按字典序升序输出}.
+
+\subsection*{程序名:}
+
+\texttt{perm}
+
+\subsection*{输入 (\texttt{perm.in}):}
+
+输入共一行. 包含一个整数$N$, 满足$1\le N\le10$.
+
+\subsection*{样例输入:}
+
+\begin{verbatim}
+3
+\end{verbatim}
+
+\subsection*{输出 (\texttt{perm.out}):}
+
+输出共$N!$行, 其中第$j$行是$N$个用空格隔开的整数, 表示第$j$种可能的排列.
+
+\subsection*{样例输出:}
+
+\begin{verbatim}
+0 1 2
+0 2 1
+1 0 2
+1 2 0
+2 0 1
+2 1 0
+\end{verbatim}
+
+\end{document}
