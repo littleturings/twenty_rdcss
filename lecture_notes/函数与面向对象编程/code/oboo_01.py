@@ -10,3 +10,5 @@ class Student:
         print(self.name,"的分数是：",self.score)
 
 s1 = Student("sx",80)
+s1.say_score()
+print(Student.count)
